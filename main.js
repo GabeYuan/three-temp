@@ -1,14 +1,14 @@
-import './style.css'
-import { World } from './World/World.js'
+import "./style.css";
+import { World } from "./World/World.js";
 
-function main() {
-    const container = document.querySelector('#app')
+async function main() {
+	const container = document.querySelector("#app");
 
-    // 1.创建World应用实例
-    const world = new World(container)
+	// 1.创建World应用实例
+	const world = new World(container);
 
-    // 2.渲染场景
-    world.render()
+	await world.init();
+	world.start();
 }
 
-main()
+main();
