@@ -3,6 +3,7 @@ import { createCube } from "./components/cube.js";
 import { createScene } from "./components/scene.js";
 import { createLights } from "./components/lights.js";
 import { createAxesHelper } from "./components/axesHelper.js";
+import { loadCity } from "./components/City.js";
 
 import { createControls } from "./systems/controls.js";
 import { createRenderer } from "./systems/renderer.js";
@@ -26,9 +27,6 @@ class World {
 
 		controls = createControls(camera, renderer.domElement);
 
-		const cube = createCube();
-		scene.add(cube);
-
 		const axesHelper = createAxesHelper();
 		scene.add(axesHelper);
 
@@ -36,6 +34,10 @@ class World {
 
 		loop.updatables.push(controls);
 		scene.add(ambientLight, mainLight);
+
+		loadCity().then((res) => {
+			scene.add(res.scene);
+		});
 
 		const resizer = new Resizer(container, camera, renderer);
 	}
