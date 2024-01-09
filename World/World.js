@@ -35,9 +35,7 @@ class World {
 		loop.updatables.push(controls);
 		scene.add(ambientLight, mainLight);
 
-		loadCity().then((res) => {
-			scene.add(res.scene);
-		});
+		loadCity(scene)
 
 		const resizer = new Resizer(container, camera, renderer);
 	}
